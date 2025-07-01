@@ -23,7 +23,7 @@ namespace WakaTime {
 
     private static string _apiKey = "";
     private static bool _enabled = true;
-    private static bool _debug = true;
+    private static bool _debug = false;
 
     private const string URL_PREFIX = "https://hackatime.hackclub.com/api/hackatime/v1/";
     private const int HEARTBEAT_COOLDOWN = 120;
@@ -162,6 +162,8 @@ namespace WakaTime {
           if (response.error != null) {
             if (response.error == "Duplicate") {
               if (_debug) Debug.LogWarning("<WakaTime> Duplicate heartbeat");
+            } else if (response.error == "Rate limit exceeded"){
+            // Don't do anything
             }
             else {
               Debug.LogError(

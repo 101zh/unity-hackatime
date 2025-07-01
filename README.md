@@ -7,7 +7,7 @@ A [Hackatime](https://hackatime.hackclub.com/) plugin for [Unity](https://unity.
 
 ## About
 
-Existing solutions didn't work for me (https://github.com/vladfaust/unity-wakatime, and other solutions lack an option for sending heartbeats to different API URLs, such as to Hackatime), so I decided to fork vladfaust's solution to support Hackatime, Wakatime and others using the API URL.
+This is pretty much just Daniel Geo's implementation of hackatime for Unity. Only thing that I did was to add a way to ignore the rate limit errors.
 
 ## Installation using the Unity Package Manager (Unity 2019.1+)
 
@@ -17,7 +17,7 @@ The [Unity Package Manager](https://docs.unity3d.com/Packages/com.unity.package-
 2. Select "Install package from git URL..."
 3. Enter the following line:
    ```
-    https://github.com/daniel-geo/unity-hackatime.git#package
+    https://github.com/101zh/unity-hackatime.git?path=/Assets/com.daniel-geo.unityhackatime
     ```
 4. Click on the install button
 
@@ -32,7 +32,7 @@ The [Unity Package Manager](https://docs.unity3d.com/Packages/com.unity.package-
 1. Modify your project's `Packages/manifest.json` file by adding this line:
 
     ```json
-    "com.daniel-geo.unityhackatime": "https://github.com/daniel-geo/unity-hackatime.git#package"
+    "com.daniel-geo.unityhackatime": "https://github.com/101zh/unity-hackatime.git?path=/Assets/com.daniel-geo.unityhackatime"
     ```
 
     Make sure it's a valid JSON file. For example:
@@ -41,7 +41,7 @@ The [Unity Package Manager](https://docs.unity3d.com/Packages/com.unity.package-
     {
         "dependencies": {
             "com.unity.ads": "2.0.8",
-            "com.daniel-geo.unityhackatime": "https://github.com/daniel-geo/unity-hackatime.git#package"
+            "com.daniel-geo.unityhackatime": "https://github.com/101zh/unity-hackatime.git?path=/Assets/com.daniel-geo.unityhackatime"
         }
     }
     ```
@@ -70,5 +70,5 @@ The plugin will automatically send heartbeats to HackaTime after the following e
 * EditorSceneManager.newSceneCreated
 
 ## Credits
-__This plugin wouldn’t exist without [@taciturnaxolotl](https://github.com/taciturnaxolotl)__  
-__A huge thanks to [@unsaltedkale](https://github.com/unsaltedkale) for her valuable help in testing the project__
+[@Daniel-Geo](https://github.com/Daniel-Geo) - The person who I forked this from\
+__Go Check out [@Daniel-Geo's Credits!](https://github.com/Daniel-Geo/unity-hackatime#credits)__

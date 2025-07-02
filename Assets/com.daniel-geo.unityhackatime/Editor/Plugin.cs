@@ -160,7 +160,7 @@ namespace WakaTime
 
             var heartbeatJSON = JsonUtility.ToJson(heartbeat);
 
-            var request = UnityWebRequest.Post(URL_PREFIX + "users/current/heartbeats?api_key=" + _apiKey, string.Empty);
+            var request = UnityWebRequest.PostWwwForm(URL_PREFIX + "users/current/heartbeats?api_key=" + _apiKey, string.Empty);
             request.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(heartbeatJSON));
             request.SetRequestHeader("Content-Type", "application/json");
 
@@ -211,11 +211,6 @@ namespace WakaTime
             Initialize();
         }
 
-        static void OnPlaymodeStateChanged(PlayModeStateChange change)
-        {
-            SendHeartbeat();
-        }
-
         static void OnPropertyContextMenu(GenericMenu menu, SerializedProperty property)
         {
             SendHeartbeat();
@@ -250,7 +245,6 @@ namespace WakaTime
         {
             if (clean)
             {
-                EditorApplication.playModeStateChanged -= OnPlaymodeStateChanged;
                 EditorApplication.contextualPropertyMenu -= OnPropertyContextMenu;
 #if UNITY_2018_1_OR_NEWER
                 EditorApplication.hierarchyChanged -= OnHierarchyWindowChanged;
@@ -263,7 +257,6 @@ namespace WakaTime
                 EditorSceneManager.newSceneCreated -= OnSceneCreated;
             }
 
-            EditorApplication.playModeStateChanged += OnPlaymodeStateChanged;
             EditorApplication.contextualPropertyMenu += OnPropertyContextMenu;
 #if UNITY_2018_1_OR_NEWER
             EditorApplication.hierarchyChanged += OnHierarchyWindowChanged;
